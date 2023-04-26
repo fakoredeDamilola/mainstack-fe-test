@@ -1,51 +1,3 @@
-// import { Line } from "react-chartjs-2"
-// import { CategoryScale, Chart } from "chart.js";
-
-// const ChartComponent:React.FC = () => {
-// Chart.register(CategoryScale);
-//     const data = {
-//         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-//         datasets: [
-//           {
-//             label: 'My Data Set',
-//             fill: true,
-//             backgroundColor: 'rgba(75,192,192,0.2)',
-//             borderColor: 'rgba(75,192,192,1)',
-//             data: [65, 59, 80, 81, 56, 55, 40],
-//           },
-//         ],
-//       };
-//   return (
-//     <Line
-//   data={data}
-//   options={
-// //     {
-// //     scales: {
-// //         // @ts-ignore
-// //       yAxes: [{ display: false }],
-// //       // @ts-ignore
-// //       xAxes: [{ display: true, categorySpacing: 0.5 }],
-// //     },
-
-// //   },
-
-// {
-//     scales: {
-//     x: {
-//         display: true, 
-//     },
-//     y: {
-//         display: false
-//     }
-// }}
-//   }
-// />
-//   )
-// }
-
-// export default ChartComponent
-
-import React from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -55,8 +7,12 @@ import {
   Title,
   Tooltip,
   Legend,
+  Filler
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { IViews } from '../pages/Dashboard/IDashboard';
+import { getMonthDay } from '../utils/utils';
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -64,33 +20,9 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  Filler
 );
-
-// export const options = {
-//   responsive: true,
-//   plugins: {
-//     legend: {
-//       position: 'top' as const,
-//     },
-//     title: {
-//       display: true,
-//       text: 'Chart.js Line Chart',
-//     },
-    
-//         scales: {
-//     x: {
-//         display: true, 
-//         categorySpacing: 0.1 
-//     },
-//     yAxes: [{
-//         gridLines: {
-//           drawBorder: false,
-//         },
-//       }]
-// }
-//   },
-// };
 
 const options={
     responsive: true,
@@ -101,42 +33,34 @@ const options={
     },
   
     scales: {
-      // to remove the labels
       x: {
-        
+        gridLines:{
+          display:false,
+        },
         grid: {
-          drawBorder: false,
+          drawBorder: true,
+          // scaleLineColor: "red",
           display: false,
         },
+        beginAtZero: true,
       },
-      // to remove the y-axis labels
-    //   y: {
-    //     ticks: {
-            
-    //       display: false,
-    //       beginAtZero: true,
-    //     },
-    //     // to remove the y-axis grid
-    //     grid: {
-    //     //   drawBorder: false,
-    //     //   display: false,
-    //     },
-    //   },
     y: {
+      gridLines:{
+        display:false,
+      },
              ticks: {
-            
-          display: false,
-          beginAtZero: true,
+              maxTicksLimit: 6,
+          
         },
-        border:{dash: [4, 4]}, // for the grid lines
+        border:{dash: [4, 4]}, 
         grid: {
-            color: 'red', // for the grid lines
-            tickColor: 'transparent', // for the tick mark
-            tickBorderDash: [2, 3], // also for the tick, if long enough
+          scaleLineColor: "red",
+            color: '#DBDEE6', 
+            tickColor: 'transparent', 
+            tickBorderDash: [9, 3], 
             tickWidth: 2,
-            // offset: true,
-            drawTicks: true, // true is default 
-            drawOnChartArea: true // true is default 
+            drawTicks: true, 
+            drawOnChartArea: true 
         },
 
         // beginAtZero: true,
@@ -145,21 +69,29 @@ const options={
   };
 
 
-    const data = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [
-          {
-            label: 'My Data Set',
-            fill: true,
-            backgroundColor: 'blue',
-            borderColor: 'red',
-            data: [65, 59, 80, 81, 56, 55, 40],
-          },
-        ],
-      };
+   
 
- function ChartComponent() {
-  return <Line options={options} data={data} />;
+ function ChartComponent({data}:{data:IViews}) {
+  const datum = {
+    labels: ["",...Object.keys(data).map(item=>getMonthDay(item))],
+    datasets: [
+      {
+        label: 'My Data Set',
+        fill: "start",
+        backgroundColor: (context:any) => {
+          const ctx = context.chart.ctx;
+          const gradient = ctx.createLinearGradient(0, 0, 0, 80);
+          gradient.addColorStop(0, "rgba(255, 84, 3, 0.2)");
+          gradient.addColorStop(1, "rgba(255,84,3,0.1)");
+          return gradient;
+        },
+        borderColor: '#FF5403',
+        data: ["",...Object.values(data)],
+        
+      },
+    ],
+  };
+  return <Line options={options} data={datum} />;
 }
 
 export default ChartComponent

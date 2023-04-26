@@ -1,31 +1,53 @@
 import styled from "styled-components";
+import { device } from "../config/theme";
 
 const AppChildren = styled.div`
 box-sizing:border-box;
-   padding: 0px 60px;
+   padding: 0px 10px;
    padding-top:92px;
    padding-bottom:44px;
    width:calc(100%-304px);
-   margin-left:304px;
+   margin-left:0px;
+     left: 100%; 
+     @media ${device.mobileM} {
+        margin-left:304px;
+        padding: 0px 60px;
+   padding-top:92px;
+  }
+`
+const HeaderBars = styled.div`
+padding-right:10px;
+cursor: pointer;
+`
+const HeaderBar = styled.div`
+width:40px;
+margin:4px 0;
+border-radius:4px;
+height:5px;
+background:red;
 `
 const HeaderStyles = styled.div`
 position:fixed;
-left:304px;
+left:0px;
 width:calc(100%);
-border:1px red solid;
 height: 68px;
 background: rgba(255, 255, 255, 0.9);
 backdrop-filter: blur(16px);
-/* display:flex;
-align-items:center; */
+display:flex;
+justify-content:space-between;
+padding-left:10px;
+padding-top:22px;
  h3 {
 letter-spacing: -0.015em;
 color: ${({theme})=>theme.primaryColor};
-padding-left:60px;
-padding-top:22px;
+
  }
+ @media ${device.mobileM} {
+        left:304px;
+padding-left:60px;
+  }
 `
-const SidebarStyles = styled.div`
+const SidebarStyles = styled.div<{show:boolean}>`
 background: #FFFFFF;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.04);
   transition:all 0.5s;
@@ -35,18 +57,15 @@ background: #FFFFFF;
     overflow-y: scroll;
     position: fixed;
     top: 0px;
-
-    // left: 100%;
-    /* transform: translateX(-100%); */
-    
-    transition: transform 0.3s ease-in-out;
+    left: ${({show})=>show ? "0":"-304px"};
+    @media ${device.mobileM} {
+        left: 0%;
+  }
+    transition: all 0.3s ease-in-out;
     width: 304px;
     box-sizing: border-box;
    
-    padding-bottom:300px;
-    /* &.open { transform: translateX(0);   */
-    
-  
+    padding-bottom:300px;   
 `
 const ListStyles = styled.div`
 & p:first-child{
@@ -101,4 +120,4 @@ const LogoContainer = styled.div`
     margin-left:54px;
 `
 
-export {AppChildren,HeaderStyles,SidebarStyles,LogoContainer,ListStyles,ListStylesChild,ContainerStyles,SideNavFooter}
+export {AppChildren,HeaderStyles,SidebarStyles,LogoContainer,ListStyles,ListStylesChild,ContainerStyles,SideNavFooter,HeaderBar,HeaderBars}

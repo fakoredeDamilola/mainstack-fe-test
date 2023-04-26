@@ -17,7 +17,15 @@ function getRandomColor():any {
     // Return the color
     return color;
   }
+
+  function getMonthDay(date:string) {
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const [,month,day] = date.split("-")
+    const formattedDate = `${day} ${months[parseInt(month) + 1]}`
+    return formattedDate
+
+  }
   
 
 
-  export {getRandomColor}
+  export {getRandomColor,getMonthDay}

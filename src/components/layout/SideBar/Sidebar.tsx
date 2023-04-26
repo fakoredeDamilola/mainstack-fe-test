@@ -4,7 +4,7 @@ import Logo from "../../Logo"
 
 const Sidebar = ({showSideBar}:{showSideBar:boolean}) => {
   return (
-    <SidebarStyles>
+    <SidebarStyles show={showSideBar}>
       <LogoContainer>
          <Logo />
       </LogoContainer>

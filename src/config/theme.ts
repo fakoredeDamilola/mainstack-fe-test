@@ -46,6 +46,12 @@ export const GlobalStyles = createGlobalStyle`
   h1 {
     font-size:${fontSize.h1};
   }
+  h2 {
+    font-size:16px;
+    @media ${device.mobileM} {
+        font-size:${fontSize.h2};
+  }
+  }
   h3 {
     font-size:${fontSize.h3};
   }

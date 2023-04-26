@@ -8,7 +8,7 @@ const options = {
     maintainAspectRatio:false,
     height:50,
     width:50,
-    cutout:"60%"
+    cutout:"60%",
 }
 
 const CardDoughnut = ({data}:{data:any}) => {
