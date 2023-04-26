@@ -1,78 +1,27 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { DashboardCardStyles, DashboardFilter, DashboardFilters, DashboardGraphHeader, DashboardGraphParagraph, DashboardGraphWrapper, DashboardGreet, DashboardParagraph, DashboardStyles, H1 } from "../../styles/Dashboard.styles"
 import { dashboardDays} from "../../utils/Links"
 import ChartComponent from "../../components/ChartComponent"
 import Card from "../../components/Card"
 import { getRandomColor } from "../../utils/utils"
+import { IData } from "./IDashboard"
 
 
 const index = () => {
+
   const [selected,setSelected] = useState("1")
-  const data ={
-    "graph_data": {
-      "views": {
-        "2022-07-31": 1,
-        "2022-08-01": 3,
-        "2022-08-02": 3,
-        "2022-08-03": 7,
-        "2022-08-04": 8,
-        "2022-08-05": 5,
-        "2022-08-06": 20,
-        "2022-08-07": 50,
-        "2022-08-08": 100,
-        "2022-08-09": 2
-      }
-    },
-    "top_locations": [
-      {
-        "country": "Nigeria",
-        "count": 68,
-        "percent": 34
-      },
-      {
-        "country": "Germany",
-        "count": 37,
-        "percent": 19
-      },
-      {
-        "country": "Ghana",
-        "count": 50,
-        "percent": 25
-      },
-      {
-        "country": "Finland",
-        "count": 40,
-        "percent": 20
-      },
-      {
-        "country": "United Kingdom",
-        "count": 4,
-        "percent": 2
-      }
-    ],
-    "top_sources": [
-      {
-        "source": "google",
-        "count": 50,
-        "percent": 25
-      },
-      {
-        "source": "instagram",
-        "count": 68,
-        "percent": 34
-      },
-      {
-        "source": "facebook",
-        "count": 40,
-        "percent": 20
-      },
-      {
-        "source": "linkedin",
-        "count": 41,
-        "percent": 21
-      }
-    ]
-  }
+  const [resData,setResData] = useState<IData | null>()
+const fetchData = async ()=>{
+  const data = await fetch("https://fe-task-api.mainstack.io")
+  const res = await data.json()
+  console.log({res})
+  setResData(res)
+}
+
+  useEffect(()=>{
+    fetchData()
+  },[])
+ 
   return (
     <DashboardStyles>
       <DashboardGreet>
@@ -84,7 +33,7 @@ const index = () => {
       <DashboardFilters>
       {dashboardDays.map((days,index)=>{
         return (
-          <DashboardFilter key={index} selected={days.value ===selected ? true : false} >
+          <DashboardFilter key={index} selected={days.value ===selected ? true : false} onClick={()=>setSelected(days.value)}>
             <p>{days.text}</p>
           </DashboardFilter>
         )
@@ -101,16 +50,16 @@ const index = () => {
         All time
         </DashboardGraphParagraph>
         <H1>500</H1>
-        <ChartComponent />
+        {resData && <ChartComponent data={resData?.graph_data?.views} />}
       </DashboardGraphWrapper>
-      <DashboardCardStyles>
-      <Card title="Top Locations" data ={data.top_locations.map(item=>{
+     {resData && <DashboardCardStyles>
+      <Card title="Top Locations" data ={resData?.top_locations.map(item=>{
         return {source:item.country,count:item.count,percent:item.percent,color:getRandomColor(),type:"png"}
       })} />
-      <Card title="Top Referral source"  data ={data.top_sources.map(item=>{
+      <Card title="Top Referral source"  data ={resData.top_sources.map(item=>{
         return {source:item.source,count:item.count,percent:item.percent,color:getRandomColor(),type:"svg"}
       })}/>
-      </DashboardCardStyles>
+      </DashboardCardStyles>}
     </DashboardStyles>
   )
 }

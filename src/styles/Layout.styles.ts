@@ -12,6 +12,7 @@ box-sizing:border-box;
      @media ${device.mobileM} {
         margin-left:304px;
         padding: 0px 60px;
+   padding-top:92px;
   }
 `
 const HeaderBars = styled.div`

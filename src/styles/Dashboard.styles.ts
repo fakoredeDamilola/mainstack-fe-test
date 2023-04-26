@@ -86,7 +86,15 @@ margin-bottom:32px;
 const DashboardCardStyles = styled.div`
 display:block;
 gap:16px;
+& div:last-child{
+ margin:20px 0; 
+}
+
 @media ${device.mobileM} {
     display:flex;
+    margin:0;
+    & div:last-child{
+ margin: 0; 
+}
   }`
 export {DashboardStyles,DashboardGreet,DashboardFilter,DashboardFilters,DashboardParagraph, DashboardGraphWrapper,DashboardGraphHeader,DashboardGraphParagraph,H1, DashboardCardStyles  }
