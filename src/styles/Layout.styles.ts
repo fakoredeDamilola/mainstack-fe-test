@@ -38,6 +38,7 @@ justify-content:space-between;
 padding-left:10px;
 padding-top:22px;
  h3 {
+cursor: pointer;
 letter-spacing: -0.015em;
 color: ${({theme})=>theme.primaryColor};
 
@@ -116,6 +117,7 @@ const ContainerStyles = styled.div`
 margin-top:40px;
 `
 const LogoContainer = styled.div`
+cursor: pointer;
     margin-top:32px;
     margin-left:54px;
 `

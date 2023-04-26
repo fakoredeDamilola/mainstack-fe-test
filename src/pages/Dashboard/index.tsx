@@ -26,7 +26,7 @@ const fetchData = async ()=>{
     <DashboardStyles>
       <DashboardGreet>
          <h3>Good morning, Blessing ⛅️</h3>
-        <p>View  analytics</p>
+        <p>View analytics</p>
       </DashboardGreet>
      
       <DashboardParagraph>Check out your dashboard summary.</DashboardParagraph>

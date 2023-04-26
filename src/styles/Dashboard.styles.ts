@@ -21,6 +21,7 @@ p{
   color:#FF5403; 
   align-self:flex-end; 
   margin-top:5px;
+  cursor: pointer;
 }
 
 
@@ -70,6 +71,9 @@ const DashboardGraphHeader = styled.div`
 display:flex;
 justify-content:space-between;
 align-items:center;
+img{
+  cursor:pointer;
+}
 `
 const DashboardGraphParagraph = styled.p`
 margin-top:8px;

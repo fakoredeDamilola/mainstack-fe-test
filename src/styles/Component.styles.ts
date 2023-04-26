@@ -43,6 +43,7 @@ margin:19px 0;
 display:flex;
 gap:12px;
 align-items:center;
+
 `
 const CardStyleCircle = styled.div<{color:string}>`
 width:12px;
@@ -53,6 +54,7 @@ background-color:${({color})=>color};
 const CardStyleText = styled.div`
 display:flex;
 gap:8px;
+align-items:center;
 font-size:16px;
 & p:last-child{
     color: #131316;
