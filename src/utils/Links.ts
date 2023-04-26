@@ -40,4 +40,14 @@ const listLinks:ILinks[] = [
 
 ]
 
-export {listLinks}
+const dashboardDays = [
+    {text:"1 Day",value:"1"},
+    {text:"3 Days",value:"3"},
+    {text:"7 Days",value:"7"},
+    {text:"30 Days",value:"30"},
+    {text:"All Time",value:"all"},
+    {text:"Custom Date",value:"custom"},
+]
+
+const recognizedCountries = ["Nigeria","United States","Netherlands","Andorra"]
+export {listLinks,dashboardDays,recognizedCountries}

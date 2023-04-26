@@ -1,9 +1,12 @@
 import styled from "styled-components";
 
 const AppChildren = styled.div`
-background: rgba(255, 255, 255, 0.9);
-   padding: 50px 0px;
-   width:100%;
+box-sizing:border-box;
+   padding: 0px 60px;
+   padding-top:92px;
+   padding-bottom:44px;
+   width:calc(100%-304px);
+   margin-left:304px;
 `
 const HeaderStyles = styled.div`
 position:fixed;
@@ -27,16 +30,20 @@ background: #FFFFFF;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.04);
   transition:all 0.5s;
   z-index:18;
-    height: calc(100vh);
-    overflow-y: auto;
+  border: 1px solid #EFF1F6;
+    height: 100%;
+    overflow-y: scroll;
     position: fixed;
     top: 0px;
+
     // left: 100%;
     /* transform: translateX(-100%); */
+    
     transition: transform 0.3s ease-in-out;
     width: 304px;
     box-sizing: border-box;
-    padding:0px 0px;
+   
+    padding-bottom:300px;
     /* &.open { transform: translateX(0);   */
     
   
@@ -63,7 +70,28 @@ p {
    color:${({selected})=>`${selected ? "#FF5403" : "#4D5760"}`};
    font-weight:500;
 };
-border-left:${({selected})=>`2px solid ${selected &&"#FF5403"}`};
+border-left:${({selected})=>`2px solid ${selected ?"#FF5403":"transparent"}`};
+&:hover{
+    border-left:2px solid #FF5403;
+    p{
+     color:#FF5403;   
+    }
+    
+}
+`
+
+const SideNavFooter = styled.div`
+img {
+    border-radius:50%;
+}
+display:flex;
+padding-left:60px;
+gap:12px;
+align-items:center;
+ position:absolute;
+top:808px;
+font-size:15px;
+color: #4D5760;
 `
 const ContainerStyles = styled.div`
 margin-top:40px;
@@ -73,4 +101,4 @@ const LogoContainer = styled.div`
     margin-left:54px;
 `
 
-export {AppChildren,HeaderStyles,SidebarStyles,LogoContainer,ListStyles,ListStylesChild,ContainerStyles}
+export {AppChildren,HeaderStyles,SidebarStyles,LogoContainer,ListStyles,ListStylesChild,ContainerStyles,SideNavFooter}
