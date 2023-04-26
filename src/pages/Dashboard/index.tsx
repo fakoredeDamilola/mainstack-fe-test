@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { DashboardCardStyles, DashboardFilter, DashboardFilters, DashboardGraphHeader, DashboardGraphParagraph, DashboardGraphWrapper, DashboardGreet, DashboardParagraph, DashboardStyles, H1 } from "../../styles/Dashboard.styles"
-import { dashboardDays, recognizedCountries } from "../../utils/Links"
+import { dashboardDays} from "../../utils/Links"
 import ChartComponent from "../../components/ChartComponent"
 import Card from "../../components/Card"
 import { getRandomColor } from "../../utils/utils"

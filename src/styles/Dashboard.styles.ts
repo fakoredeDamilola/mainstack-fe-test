@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../config/theme";
 
 const DashboardStyles = styled.div`
 width:100%;
@@ -19,14 +20,20 @@ const DashboardGreet = styled.div`
 p{
   color:#FF5403; 
   align-self:flex-end; 
+  margin-top:5px;
 }
 
-display:flex;
+
+@media ${device.mobileM} {
+    margin-top:0px;
+    display:flex;
 justify-content:space-between;
-align-items:center;
+align-items:center;    
+  }
 `
 const DashboardFilters = styled.div`
 display:flex;
+flex-wrap:wrap;
 gap:12px;
 `
 const DashboardFilter = styled.div<{selected:boolean}>`
@@ -77,7 +84,9 @@ margin-bottom:32px;
 /* font-family: 'TestSohneMono-Fett', sans-serif; */
 `
 const DashboardCardStyles = styled.div`
-display:flex;
+display:block;
 gap:16px;
-`
+@media ${device.mobileM} {
+    display:flex;
+  }`
 export {DashboardStyles,DashboardGreet,DashboardFilter,DashboardFilters,DashboardParagraph, DashboardGraphWrapper,DashboardGraphHeader,DashboardGraphParagraph,H1, DashboardCardStyles  }
