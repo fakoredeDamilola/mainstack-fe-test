@@ -39,8 +39,9 @@ export const GlobalStyles = createGlobalStyle`
     margin:0;  
    box-sizing:border-box;
    }
-  h1,h3,h4,h5,h6{
+  h1,h2,h3,h4,h5,h6{
     font-family: 'TestSohneMono-Buch', sans-serif;
+    color: #131316;
   }
   h1 {
     font-size:${fontSize.h1};
@@ -48,6 +49,10 @@ export const GlobalStyles = createGlobalStyle`
   h3 {
     font-size:${fontSize.h3};
   }
+  h4 {
+    font-size:${fontSize.h4};
+  }
+
   p {
     font-family: 'TestSohneMono-Fett', sans-serif;
   }

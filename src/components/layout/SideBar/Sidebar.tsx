@@ -1,4 +1,4 @@
-import { ContainerStyles, ListStyles, ListStylesChild, LogoContainer, SidebarStyles } from "../../../styles/Layout.styles"
+import { ContainerStyles, ListStyles, ListStylesChild, LogoContainer, SideNavFooter, SidebarStyles } from "../../../styles/Layout.styles"
 import { IChild, ILinks, listLinks } from "../../../utils/Links"
 import Logo from "../../Logo"
 
@@ -26,6 +26,9 @@ const Sidebar = ({showSideBar}:{showSideBar:boolean}) => {
         )
       })}
       </ContainerStyles>
+      <SideNavFooter>
+        <img src='image.png' alt="BD"/> <p>Blessing Daniels</p>
+      </SideNavFooter>
     </SidebarStyles>
   )
 }
