@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../config/theme";
 
 const CardStyles = styled.div`
 padding:24px;
@@ -25,7 +26,7 @@ const CardStylesDetail = styled.div`
 }
 `
 const CardStylesInfo = styled.div`
-gap:20px;
+gap:0px;
 display:flex;
 align-items:center;
 justify-content:space-between;
@@ -33,6 +34,9 @@ justify-content:space-between;
    width:160px;
    height:160px;
 }
+@media ${device.mobileM} {
+       gap:20px;
+  }
 `
 const CardStyleDetail = styled.div`
 margin:19px 0;

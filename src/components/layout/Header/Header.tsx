@@ -1,4 +1,4 @@
-import { HeaderStyles } from "../../../styles/Layout.styles";
+import { HeaderBar, HeaderBars, HeaderStyles } from "../../../styles/Layout.styles";
 
 const Header = ({showSidebar,setShowSideBar}:{
     showSidebar:boolean;
@@ -7,6 +7,11 @@ const Header = ({showSidebar,setShowSideBar}:{
   return (
     <HeaderStyles>
    <h3>Dashboard</h3>  
+   <HeaderBars onClick={()=>setShowSideBar(!showSidebar)}>
+    <HeaderBar />
+    <HeaderBar />
+    <HeaderBar />
+   </HeaderBars>
     </HeaderStyles>
    
   )
