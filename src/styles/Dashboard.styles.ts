@@ -90,6 +90,7 @@ margin-bottom:32px;
 const DashboardCardStyles = styled.div`
 display:block;
 gap:16px;
+margin-bottom:44px;
 & div:last-child{
  margin:20px 0; 
 }
@@ -97,6 +98,7 @@ gap:16px;
 @media ${device.mobileM} {
     display:flex;
     margin:0;
+    margin-bottom:44px;
     & div:last-child{
  margin: 0; 
 }

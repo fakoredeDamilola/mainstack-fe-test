@@ -28,9 +28,10 @@ const CardStylesDetail = styled.div`
 const CardStylesInfo = styled.div`
 gap:0px;
 display:flex;
-align-items:center;
+/* align-items:center; */
 justify-content:space-between;
 & >div:last-child {
+    margin-top:40px;
    width:160px;
    height:160px;
 }
