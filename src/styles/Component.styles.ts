@@ -3,9 +3,11 @@ import { device } from "../config/theme";
 
 const CardStyles = styled.div`
 padding:24px;
+padding-bottom:45px;
 border: 1px solid #EFF1F6;
 border-radius: 12px;
 width:100%;
+position:relative;
 
 `
 const CardStylesHeading = styled.div`
@@ -28,10 +30,12 @@ const CardStylesDetail = styled.div`
 const CardStylesInfo = styled.div`
 gap:0px;
 display:flex;
-/* align-items:center; */
 justify-content:space-between;
 & >div:last-child {
-    margin-top:40px;
+    /* margin-top:62.59px; */
+    position:absolute;
+    bottom:64.85px;
+    right:40.05px;
    width:160px;
    height:160px;
 }

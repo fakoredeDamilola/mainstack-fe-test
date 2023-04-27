@@ -9,6 +9,9 @@ const options = {
     height:50,
     width:50,
     cutout:"60%",
+    layout: {
+      padding: 0
+  }
 }
 
 const CardDoughnut = ({data}:{data:any}) => {
