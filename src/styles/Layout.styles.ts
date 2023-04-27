@@ -37,6 +37,7 @@ display:flex;
 justify-content:space-between;
 padding-left:10px;
 padding-top:22px;
+z-index:999;
  h3 {
 cursor: pointer;
 letter-spacing: -0.015em;
