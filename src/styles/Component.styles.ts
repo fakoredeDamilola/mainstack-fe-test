@@ -31,13 +31,16 @@ const CardStylesInfo = styled.div`
 gap:0px;
 display:flex;
 justify-content:space-between;
+align-items:center;
 & >div:last-child {
     /* margin-top:62.59px; */
+   width:160px;
+   height:160px;
+   @media ${device.mobileM} {
     position:absolute;
     bottom:64.85px;
     right:40.05px;
-   width:160px;
-   height:160px;
+  }
 }
 @media ${device.mobileM} {
        gap:20px;
